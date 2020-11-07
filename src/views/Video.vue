@@ -94,7 +94,6 @@
 
 <script>
 import {defineComponent} from 'vue'
-import * as Chime from 'amazon-chime-sdk-js'
 
 import useVideo from '../repository/video'
 
