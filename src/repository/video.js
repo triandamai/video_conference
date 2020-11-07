@@ -36,7 +36,7 @@ export default function useVideo(){
         cretaeJoinMeeting,
         meeting,
         attende,
-        supportVideo,
+        supportMedia,
         getVideo
     }
 }
