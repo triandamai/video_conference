@@ -6,6 +6,10 @@ export default function useVideo(){
     let supportVideo = ref(false)
 
     function getVideo(){
+        const constraints = {
+            'video': true,
+            'audio': true
+        }
         navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => {
             console.log('Got MediaStream:', stream);
