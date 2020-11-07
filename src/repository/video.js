@@ -3,7 +3,7 @@ import {ref} from 'vue'
 export default function useVideo(){
     let meeting = ref({})
     let attende = ref({})
-    let supportVideo = ref(false)
+    let supportMedia = ref(false)
 
     function getVideo(){
         const constraints = {
@@ -13,11 +13,11 @@ export default function useVideo(){
         navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => {
             console.log('Got MediaStream:', stream);
-            supportVideo.value = true
+            supportMedia.value = true
         })
         .catch(error => {
             console.error('Error accessing media devices.', error);
-            supportVideo.value = false
+            supportMedia.value = false
         })
     }
     
