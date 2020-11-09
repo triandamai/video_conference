@@ -1,14 +1,19 @@
 import {ref} from 'vue'
 
+import axios from 'axios'
+
+
 export default function useVideo(){
-    let meeting = ref({})
-    let attende = ref({})
+   
     let supportMedia = ref(false)
 
-    function getVideo(){
+    function getSupportMedia(){
         const constraints = {
             'video': true,
             'audio': true,
+        }
+        if(navigator.mediaDevices){
+            supportMedia.value = false
         }
         navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => {
@@ -20,23 +25,16 @@ export default function useVideo(){
             supportMedia.value = false
         })
     }
-    
-    function cretaeJoinMeeting(){
-        this.axios.post('https://dev.berdayakan.com/node/join',{})
-        .then(res=>{
-            console.log(res)
-            meeting.value = res.data.detail.meeting
-            attende.value = res.data.detail.attende
-        })
-        .catch(er=>{
-            console.log(er)
-        })
+
+
+    async function cretaeJoinMeeting(){
+       return axios.post('https://dev.berdayakan.com/node/create',{});
     }
+ 
     return {
         cretaeJoinMeeting,
-        meeting,
-        attende,
         supportMedia,
-        getVideo
+        getSupportMedia,
+        
     }
 }

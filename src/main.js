@@ -12,3 +12,7 @@ createApp(App)
 .use(router)
 .use(vueaxios,axios)
 .mount('#app')
+
+
+// eslint-disable-next-line
+/* eslint-disable */
