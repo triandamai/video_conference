@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -17,16 +18,20 @@ const routes = [
       {
         path:'/main',
         component:()=>import('../components/Main.vue')
-      },{
-        path:'/error',
-        component:()=>import('../components/Error.vue')
       }
     ]
+  },
+  {
+    path:'*',
+    name:"NotFound",
+    component:()=>import('../components/Error.vue')
   }
 ]
 
+ 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  base:"/",
   routes
 })
 
