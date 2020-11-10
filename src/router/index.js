@@ -1,19 +1,20 @@
 
 import { createRouter, createWebHistory } from 'vue-router'
 
+
 const routes = [
   {
-    path: '/',
+    path:'/',
+    redirect:'/auth'
+  },
+  {
+    path: '/home',
     name: 'Video',
     component: () => import( '../views/Video.vue'),
     children:[
       {
         path:'/',
-        redirect:'/auth'
-      },
-      {
-        path:'/auth',
-        component:()=> import('../components/Auth.vue'),
+        redirect:'/main'
       },
       {
         path:'/main',
@@ -22,16 +23,19 @@ const routes = [
     ]
   },
   {
-    path:'*',
+    path:'/auth',
+    name:"Auth",
+    component:()=> import('../views/Auth.vue'),
+  },
+  {
+    path:'/:pathMatch(.*)*',
     name:"NotFound",
-    component:()=>import('../components/Error.vue')
+    component:()=>import('../views/Error.vue')
   }
 ]
-
  
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  base:"/",
+  history: createWebHistory(),
   routes
 })
 
